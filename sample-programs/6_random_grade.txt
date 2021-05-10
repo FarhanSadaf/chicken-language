@@ -1,0 +1,24 @@
+# Grade from randomly generated marks
+
+i := 0;
+while i < 10 then {
+    print "Case: ";
+    print i+1;
+    print "\n";
+
+    marks := random(0, 100);    # Generate random number between 1 to 100
+
+    print "Marks: ";
+    print marks;
+    print "\n";
+
+    if marks > 0 and marks < 60 then print "Grade: F\n";
+    else if marks >= 60 and marks < 70 then print "Grade: B\n";
+    else if marks >= 70 and marks < 75 then print "Grade: B+\n";
+    else if marks >= 75 and marks < 80 then print "Grade: A-\n";
+    else if marks >= 80 and marks <= 100 then print "Grade: A+\n";
+    else print "Invalid marks";
+
+    print "\n\n";
+    i := i + 1;
+}

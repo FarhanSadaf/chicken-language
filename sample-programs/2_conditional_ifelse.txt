@@ -1,0 +1,18 @@
+number1 := 21.5;
+
+if (number1 > 20) then {
+    print "number1 grater than 20\n";
+
+    number2 := 0;
+    if number2 = 0 then number2 := -1;      # nested if-else
+    else number2 := 1;
+
+    print "number2: ";
+    print number2;
+    print "\n";
+}
+else {
+    print "number1 less than 20\n";
+    print number1;
+    print "\n";
+}

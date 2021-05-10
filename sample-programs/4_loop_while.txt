@@ -1,0 +1,13 @@
+
+from := -10;
+to := 10;
+
+# Even/odd numbers between (from - to)
+number := from;
+while number <= to then {
+    print number;
+    if number % 2 = 0 then print " : is EVEN\n";
+    else print " : is ODD\n";
+
+    number := number + 1;
+}

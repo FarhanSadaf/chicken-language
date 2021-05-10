@@ -1,0 +1,12 @@
+marks := 79;
+
+print "Marks: ";
+print marks;
+print "\n";
+
+if marks > 10 and marks < 60 then print "F";
+else if marks >= 60 and marks < 70 then print "B\n";
+else if marks >= 70 and marks < 75 then print "B+\n";
+else if marks >= 75 and marks < 80 then print "A-\n";
+else if marks >= 80 and marks <= 100 then print "A+\n";
+else print "Invalid marks\n";

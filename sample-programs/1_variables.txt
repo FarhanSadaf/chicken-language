@@ -1,0 +1,19 @@
+# This is comment
+
+# All variables are declared globally 
+# Declare variables
+i := 11;
+firstVariable := 21.49;
+last_ := -21.3e+4;
+
+print "Value of i: ";
+print i;
+print "\n";
+
+print "Value of firstVariable: ";
+print firstVariable;
+print "\n";
+
+print "Value of last_: ";
+print last_;
+print "\n";
