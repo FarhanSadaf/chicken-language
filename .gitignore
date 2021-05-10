@@ -1,0 +1,5 @@
+*.tab.*
+lex.yy.c
+version.txt
+
+.vscode
