@@ -4,6 +4,7 @@
     #include <stdarg.h>
     #include <string.h>
     #include <time.h>
+    #include <math.h>
     #include "chicken.h"
 
     #define YYDEBUG 0
@@ -44,6 +45,7 @@
 %left '+' '-'
 %left '*' '/' '%'
 %left NOT
+%left '^'
 %nonassoc UMINUS
 
 %type <nPtr> statement expression statement_list
@@ -76,6 +78,7 @@ expression : NUMBER { $$ = cond($1); }
            | VARIABLE { $$ = id($1, GET); }
            | RANDOM '(' expression ',' expression ')' { $$ = opr(RANDOM, 2, $3, $5); }
            | '-' expression %prec UMINUS { $$ = opr(UMINUS, 1, $2); }
+           | expression '^' expression { $$ = opr('^', 2, $1, $3); }
            | expression '+' expression { $$ = opr('+', 2, $1, $3); }
            | expression '-' expression { $$ = opr('-', 2, $1, $3); }
            | expression '*' expression { $$ = opr('*', 2, $1, $3); }
@@ -269,6 +272,7 @@ double ex(nodeType *p) {
                     return ex(p->opr.op[1]);
                 case ASSIGN: return sym[p->opr.op[0]->id.i] = ex(p->opr.op[1]);
                 case UMINUS: return -ex(p->opr.op[0]);
+                case '^': return pow(ex(p->opr.op[0]), ex(p->opr.op[1]));
                 case '+': return ex(p->opr.op[0]) + ex(p->opr.op[1]);
                 case '-': return ex(p->opr.op[0]) - ex(p->opr.op[1]);
                 case '*': return ex(p->opr.op[0]) * ex(p->opr.op[1]);
