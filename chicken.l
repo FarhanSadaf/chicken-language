@@ -8,13 +8,13 @@
     int lineno = 0;
 %}
 
-ID  [a-zA-Z][a-z0-9A-Z_]*
-EXP [Ee][-+]?[0-9]+
+ID      [a-zA-Z][a-z0-9A-Z_]*
+EXPO    [Ee][-+]?[0-9]+
 
 %%
 "#".*   /* Single-line comment */
 
-[0-9]+|[0-9]+"."[0-9]*{EXP}?|"."?[0-9]+{EXP}? {
+[0-9]+|[0-9]+"."[0-9]*{EXPO}?|"."?[0-9]+{EXPO}? {
     yylval.dValue = atof(yytext);
     return NUMBER;
 }
@@ -47,8 +47,23 @@ EXP [Ee][-+]?[0-9]+
 
 "print" return PRINT;
 "scan"  return SCAN;
+"exit"  return EXIT;
+
+"PI"    return PI;
 
 "random"    return RANDOM;
+"log"       return LOG;
+"exp"       return EXP;
+"sqrt"      return SQRT;
+"floor"     return FLOOR;
+"ceil"      return CEIL;
+"abs"       return ABS;
+"sin"       return SIN;
+"asin"      return ASIN;
+"cos"       return COS;
+"acos"      return ACOS;
+"tan"       return TAN;
+"atan"      return ATAN;
 
 {ID} {
     yylval.vName = strdup(yytext);

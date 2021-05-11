@@ -1,0 +1,35 @@
+# e base log
+x := random(1, 20);
+print "log(";
+print x;
+print "): ";
+
+print log(x);
+print "\n";
+
+# n base log
+base := floor(random(2, 10));
+print "log(";
+print x;
+print ", ";
+print base;
+print "): ";
+
+print log(x, base);
+print "\n";
+
+# e^x
+x := random(1, 8);
+print "e^";
+print x;
+print ": ";
+
+print exp(x);
+print "\n";
+
+# exit keyword
+exit;
+
+print "Value of e: ";
+print exp(1);
+print "\n";

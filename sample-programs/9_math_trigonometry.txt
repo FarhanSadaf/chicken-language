@@ -1,0 +1,56 @@
+print "Value of PI:";
+print PI;
+print "\n\n";
+
+x := ceil(random(-361, 359));
+
+# SIN
+print "sin(";
+print x;
+print "): ";
+
+result := sin(x);
+print result;
+print "\n";
+
+# SIN^-1
+print "Inverse of sin(";
+print result;
+print "): ";
+
+print asin(result);
+print "\n\n";
+
+# COS
+print "cos(";
+print x;
+print "): ";
+
+result := cos(x);
+print result;
+print "\n";
+
+# COS^-1
+print "Inverse of cos(";
+print result;
+print "): ";
+
+print acos(result);
+print "\n\n";
+
+# TAN
+print "tan(";
+print x;
+print "): ";
+
+result := tan(x);
+print result;
+print "\n";
+
+# SIN^-1
+print "Inverse of tan(";
+print result;
+print "): ";
+
+print atan(result);
+print "\n";
