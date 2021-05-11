@@ -1,5 +1,13 @@
+/* For symbol and variable table */
 #define IDLEN 31
 #define SYMSIZE 100
+
+/* For for-loop */
+#define FOR_CONDITION(start, end, increment) ((increment < 0) ? (start > end) : (start < end))
+
+/* Modes for getIndex() */
+#define SET 0
+#define GET 1
 
 typedef enum
 {

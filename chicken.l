@@ -29,7 +29,7 @@ EXPO    [Ee][-+]?[0-9]+
     }
 }
 
-[-()<>=+*/%^,;{}] {
+[-()<>=+*/%^,;:{}] {
     return *yytext;
 }
 
@@ -38,6 +38,7 @@ EXPO    [Ee][-+]?[0-9]+
 "<="    return LE;
 "!="    return NE;
 "while" return WHILE;
+"for"   return FOR;
 "if"    return IF;
 "else"  return ELSE;
 "then"  return THEN;

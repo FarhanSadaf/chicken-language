@@ -1,0 +1,18 @@
+a := 10;
+b := -11;
+c := 21;
+d := 0;
+
+if not d then {
+    if a > b and a > c or b < c then print "Statement 1: True\n";
+    else print "Statement 1: False\n";
+}
+
+if 0 or 1 and 1 then 
+    print "Statement 2\n";
+
+if 1 and 1 and 0 then 
+    print "Statement 3\n";
+
+if 1 and 1 and not 0 then
+    print "Statement 4\n";

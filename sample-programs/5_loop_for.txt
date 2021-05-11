@@ -1,0 +1,12 @@
+number := 0;
+for number : (-10, 0, 1) then {
+    print number;
+    if number % 2 = 0 then print " : is EVEN\n";
+    else print " : is ODD\n";
+}
+
+for number : (10, -1, -1) then {
+    print number;
+    if number % 2 = 0 then print " : is EVEN\n";
+    else print " : is ODD\n";
+}

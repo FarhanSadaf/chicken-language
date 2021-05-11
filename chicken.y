@@ -8,8 +8,6 @@
     #include "chicken.h"
 
     #define YYDEBUG 0
-    #define SET 0
-    #define GET 1
 
     int getIndex(char *id, char mode);      /* Returns index from symbol table */
     nodeType *id(char *vName, char mode);   /* Identifier type node */
@@ -36,7 +34,7 @@
 %token <dValue> NUMBER
 %token <vName> VARIABLE
 %token <sValue> STRING
-%token WHILE IF THEN PRINT ASSIGN EXIT RANDOM PI SCAN LOG EXP SQRT FLOOR CEIL ABS SIN ASIN COS ACOS TAN ATAN
+%token WHILE FOR IF THEN PRINT ASSIGN EXIT RANDOM PI SCAN LOG EXP SQRT FLOOR CEIL ABS SIN ASIN COS ACOS TAN ATAN
 %nonassoc IFX
 %nonassoc ELSE
 
@@ -66,6 +64,7 @@ statement : ';' { $$ = opr(';', 2, NULL, NULL); }
           | PRINT STRING ';' { $$ = opr(PRINT, 1, cons($2)); }
           | SCAN VARIABLE ';' { $$ = opr(SCAN, 1, id($2, GET)); }
           | WHILE expression THEN statement { $$ = opr(WHILE, 2, $2, $4); }
+          | FOR VARIABLE ':' '(' expression ',' expression ',' expression ')' THEN statement { $$ = opr(FOR, 5, id($2, GET), $5, $7, $9, $12); }
           | IF expression THEN statement %prec IFX { $$ = opr(IF, 2, $2, $4); }
           | IF expression THEN statement ELSE statement { $$ = opr(IF, 3, $2, $4, $6); }
           | '{' statement_list '}' { $$ = $2; }
@@ -114,8 +113,9 @@ expression : NUMBER { $$ = cond($1); }
 
 int getIndex(char *id, char mode)
 {
+    /* Returns the variable index from symbol table */
     switch (mode) {
-        case GET:
+        case GET:       /* Return index of variable from symbol table */
         {
             for (int i = 0; i < SYMSIZE; i++) {
                 if (!strcmp(vars[i], "-1")) return -1;
@@ -123,7 +123,7 @@ int getIndex(char *id, char mode)
             }
             return -1;
         }
-        case SET:
+        case SET:       /* Sets the index of variable from symbol table and then returns the index */
         {
             for (int i = 0; i < SYMSIZE; i++) {
                 if (!strcmp(id, vars[i])) return i;     /* ID already exists */
@@ -236,6 +236,16 @@ double ex(nodeType *p) {
                     while (ex(p->opr.op[0]))
                         ex(p->opr.op[1]);
                     return 0;
+                case FOR:
+                {                    
+                    sym[p->opr.op[0]->id.i] = ex(p->opr.op[1]);     /* start */
+                    double end = ex(p->opr.op[2]), increment = ex(p->opr.op[3]);
+                    while (FOR_CONDITION(sym[p->opr.op[0]->id.i], end, increment)) {
+                        ex(p->opr.op[4]);
+                        sym[p->opr.op[0]->id.i] += increment;
+                    }
+                    return 0;
+                }
                 case IF:
                     if (ex(p->opr.op[0]))
                         ex(p->opr.op[1]);

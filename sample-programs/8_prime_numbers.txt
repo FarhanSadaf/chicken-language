@@ -1,0 +1,21 @@
+# Prime numbers from 2 - 20
+number := 2;
+for number : (number, 20, 1) then {
+    # Code for checking if 'number' is prime
+    flag := 1;
+    i := 2;
+    while i <= number/2 then {
+        if number % i = 0 then {
+            print number;
+            print ": is not prime\n";
+
+            flag := 0;
+            i := number;    # To break from loop
+        }
+        i := i + 1;
+    }
+    if flag then {
+        print number;
+        print ": is prime\n";
+    }
+}
