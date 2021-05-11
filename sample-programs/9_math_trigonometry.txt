@@ -1,13 +1,13 @@
-print "Value of PI:";
+print "Value of PI: ";
 print PI;
 print "\n\n";
 
-x := ceil(random(-361, 359));
+x := random(-2*PI, 2*PI);
 
 # SIN
 print "sin(";
-print x;
-print "): ";
+print x/PI;
+print " PI): ";
 
 result := sin(x);
 print result;
@@ -18,13 +18,13 @@ print "Inverse of sin(";
 print result;
 print "): ";
 
-print asin(result);
-print "\n\n";
+print (asin(result) * 180) / PI;
+print " degree\n\n";
 
 # COS
 print "cos(";
-print x;
-print "): ";
+print x/PI;
+print " PI): ";
 
 result := cos(x);
 print result;
@@ -35,22 +35,22 @@ print "Inverse of cos(";
 print result;
 print "): ";
 
-print acos(result);
-print "\n\n";
+print (acos(result) * 180) / PI;
+print " degree\n\n";
 
 # TAN
 print "tan(";
-print x;
-print "): ";
+print x/PI;
+print " PI): ";
 
 result := tan(x);
 print result;
 print "\n";
 
-# SIN^-1
+# TAN^-1
 print "Inverse of tan(";
 print result;
 print "): ";
 
-print atan(result);
-print "\n";
+print (atan(result) * 180) / PI;
+print " degree\n";

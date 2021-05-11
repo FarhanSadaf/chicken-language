@@ -262,7 +262,7 @@ double ex(nodeType *p) {
                     }
                     else {
                         double dValue = ex(p->opr.op[0]);
-                        if (dValue == (int)dValue) printf("%d", (int)dValue);
+                        if (dValue == floor(dValue)) printf("%d", (int)dValue);
                         else if (dValue - floor(dValue) < 1e-6) printf("%e", dValue);
                         else printf("%lf", dValue);
                         return 0;
@@ -300,12 +300,12 @@ double ex(nodeType *p) {
                 case CEIL: return ceil(ex(p->opr.op[0]));
                 case ABS: return fabs(ex(p->opr.op[0]));
                 case PI: return M_PI;
-                case SIN: return sin(ex(p->opr.op[0]) * M_PI/180);      /* Argument in degree */
-                case ASIN: return asin(ex(p->opr.op[0])) * 180/M_PI;    /* Returns in degree */
-                case COS: return cos(ex(p->opr.op[0]) * M_PI/180);      /* Argument in degree */
-                case ACOS: return acos(ex(p->opr.op[0])) * 180/M_PI;    /* Returns in degree */
-                case TAN: return tan(ex(p->opr.op[0]) * M_PI/180);      /* Argument in degree */
-                case ATAN: return atan(ex(p->opr.op[0])) * 180/M_PI;    /* Returns in degree */
+                case SIN: return sin(ex(p->opr.op[0]));
+                case ASIN: return asin(ex(p->opr.op[0]));
+                case COS: return cos(ex(p->opr.op[0]));
+                case ACOS: return acos(ex(p->opr.op[0]));
+                case TAN: return tan(ex(p->opr.op[0]));
+                case ATAN: return atan(ex(p->opr.op[0]));
                 case ';':
                     ex(p->opr.op[0]);
                     return ex(p->opr.op[1]);
