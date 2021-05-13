@@ -15,7 +15,7 @@ gcc -o chick lex.yy.c chicken.tab.c
 
 #### *Run program*
 1. ***Interactive mode*** command is `chick`.
-2. ***To run a script***, command is `chick <file-name>.txt`.<br/>For example, `chick sample-programs/7_prime_numbers.txt`.
+2. ***To run a script***, command is `chick <file-name>.txt`.<br/>For example, `chick sample-programs/8_prime_numbers.txt`.
 
 <br/>
 
