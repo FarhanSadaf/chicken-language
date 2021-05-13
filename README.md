@@ -1,7 +1,7 @@
 <img src="https://user-images.githubusercontent.com/52249052/117655651-2d2e3080-b1b9-11eb-803f-f1210c0131e6.png" width=70 />
 
 ## *Chicken Programming Language*
-A simple, light programming language for basic calculation and problem solving.
+A simple and light programming language for basic problem solving and calculation.
 
 <br/>
 
