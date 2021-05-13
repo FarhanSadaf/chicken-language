@@ -3,7 +3,7 @@
 #define SYMSIZE 100
 
 /* For for-loop */
-#define FOR_CONDITION(start, end, increment) ((increment < 0) ? (start > end) : (start < end))
+#define FOR_CONDITION(start, end, step) ((step < 0) ? (start > end) : (start < end))
 
 /* Modes for getIndex() */
 #define SET 0

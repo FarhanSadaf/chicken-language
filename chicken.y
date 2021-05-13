@@ -239,10 +239,10 @@ double ex(nodeType *p) {
                 case FOR:
                 {                    
                     sym[p->opr.op[0]->id.i] = ex(p->opr.op[1]);     /* start */
-                    double end = ex(p->opr.op[2]), increment = ex(p->opr.op[3]);
-                    while (FOR_CONDITION(sym[p->opr.op[0]->id.i], end, increment)) {
+                    double end = ex(p->opr.op[2]), step = ex(p->opr.op[3]);
+                    while (FOR_CONDITION(sym[p->opr.op[0]->id.i], end, step)) {
                         ex(p->opr.op[4]);
-                        sym[p->opr.op[0]->id.i] += increment;
+                        sym[p->opr.op[0]->id.i] += step;
                     }
                     return 0;
                 }
